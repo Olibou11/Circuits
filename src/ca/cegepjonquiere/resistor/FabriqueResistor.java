@@ -1,8 +1,11 @@
+// Importation package
+package ca.cegepjonquiere.resistor;
+
 // Importations
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-// Classe FabriqueResistor
+// Classe ''ca.cegepjonquiere.resistor.FabriqueResistor''
 public class FabriqueResistor {
 
     // Constructeur

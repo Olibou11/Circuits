@@ -1,4 +1,7 @@
-// Enum ''CodeCouleur''
+// Importation package
+package ca.cegepjonquiere.resistor;
+
+// Enum ''ca.cegepjonquiere.resistor.CodeCouleur''
 public enum CodeCouleur {
     N (0, 1, 0) , // Noir
     B (1, 10, 1) , // Brun
@@ -14,9 +17,9 @@ public enum CodeCouleur {
     o (0, 0.1, 5) ; // Or
 
     // Attributs privés
-    private int valeur;
-    private double multiplicateur;
-    private double tolerance;
+    private final int valeur;
+    private final double multiplicateur;
+    private final double tolerance;
 
     // Constructeur
     CodeCouleur(int valeur, double multiplication, double tolerance){
@@ -32,30 +35,18 @@ public enum CodeCouleur {
         return multiplicateur;
     }
 
-    public void setMultiplicateur(double multiplicateur) {
-        this.multiplicateur = multiplicateur;
-    }
-
     public int getValeur() {
         return valeur;
-    }
-
-    public void setValeur(int valeur) {
-        this.valeur = valeur;
     }
 
     public double getTolerance() {
         return tolerance;
     }
 
-    public void setTolerance(double tolerance) {
-        this.tolerance = tolerance;
-    }
-
     // Méthode toString
     @Override
     public String toString() {
-        return "CodeCouleur{" +
+        return "ca.cegepjonquiere.resistor.CodeCouleur{" +
                 "valeur=" + valeur +
                 ", multiplicateur=" + multiplicateur +
                 ", tolerance=" + tolerance +

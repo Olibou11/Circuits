@@ -1,4 +1,7 @@
-// Classe Resistor
+// Importation package
+package ca.cegepjonquiere.resistor;
+
+// Classe ''ca.cegepjonquiere.resistor.Resistor''
 public class Resistor {
 
     // Attributs
@@ -32,7 +35,7 @@ public class Resistor {
     // Méthode toString
     @Override
     public String toString() {
-        return "Resistor{" +
+        return "ca.cegepjonquiere.resistor.Resistor{" +
                 "resistance=" + resistance +
                 ", tolerance=" + tolerance +
                 '}';
