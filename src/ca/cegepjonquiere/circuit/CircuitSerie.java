@@ -4,10 +4,6 @@ package ca.cegepjonquiere.circuit;
 // Classe ''ca.cegepjonquiere.circuit.CircuitSerie''
 public class CircuitSerie extends Circuit {
 
-    // Attributs
-    private double resistance = 0;
-    private double courant;
-
     // Constructeur ''ca.cegepjonquiere.circuit.CircuitSerie'' basic
     public CircuitSerie(){
     }
@@ -15,6 +11,7 @@ public class CircuitSerie extends Circuit {
     // Méthodes
 
     public double calculerResistance(){ // Calcul la résistance totale
+        double resistance = 0;
         for (int i = 0; i < tableauResistors.length; i++) {
             if (tableauResistors[i] != null) // Vérifie s'il s'agit d'un Résisteur
                 resistance = resistance + tableauResistors[i].getResistance();
@@ -30,7 +27,6 @@ public class CircuitSerie extends Circuit {
     @Override
     public String toString() {
         return "ca.cegepjonquiere.circuit.CircuitSerie{" +
-                "resistance=" + resistance +
                 '}';
     }
 }
