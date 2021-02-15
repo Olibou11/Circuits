@@ -4,8 +4,10 @@ package ca.cegepjonquiere.circuit;
 // Importation
 import ca.cegepjonquiere.resistor.Resistor;
 
+import java.util.Arrays;
+
 // Classe ''ca.cegepjonquiere.circuit.Circuit''
-public class Circuit {
+public abstract class AbstractCircuit {
 
     // Attributs
     private double tension;
@@ -17,10 +19,10 @@ public class Circuit {
     private int nbDefois = 0;
 
     // Constructeur ''ca.cegepjonquiere.circuit.Circuit'' basic
-    public Circuit() {
+    public AbstractCircuit() {
     }
 
-// Méthodes
+    // Méthodes
 
     public void ajouterResistor(Resistor r){
         tableauResistors[nbDefois] = r;
@@ -33,6 +35,22 @@ public class Circuit {
 
     public double calculerTension(){
         return tension;
+    }
+
+    public abstract double calculerResistance();
+
+    public double calculerCourant(){
+        return calculerTension() / calculerResistance();
+        }
+
+    // Méthode toString
+    @Override
+    public String toString() {
+        return "AbstractCircuit{" +
+                "tension=" + tension +
+                ", tableauResistors=" + Arrays.toString(tableauResistors) +
+                ", nbDefois=" + nbDefois +
+                '}';
     }
 }
 

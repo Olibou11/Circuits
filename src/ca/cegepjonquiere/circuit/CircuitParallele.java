@@ -2,10 +2,10 @@
 package ca.cegepjonquiere.circuit;
 
 // Classe ''ca.cegepjonquiere.circuit.CircuitParallele''
-public class CircuitParallele extends Circuit {
+public class CircuitParallele extends AbstractCircuit {
 
     // Constructeur basic
-    public CircuitParallele(){
+    public CircuitParallele() {
     }
 
     // Méthodes
@@ -20,14 +20,16 @@ public class CircuitParallele extends Circuit {
         return 1 / resistanceInverse;
     }
 
-    public double calculerCourrant(){
-        return calculerTension() / calculerResistance();
-    }
-
     // Méthode toString
     @Override
     public String toString() {
-        return "ca.cegepjonquiere.circuit.CircuitParallele{" +
-                '}';
+        double tension = calculerTension();
+        String string = "";
+        for (int i = 0; i < tableauResistors.length; i++) {
+            if (tableauResistors[i] != null) { // Pas de résistors null
+                string += "(" + tableauResistors[i].getResistance() + " Ω, " + tension + " V, " + (tension / tableauResistors[i].getResistance()) + "A), ";
+            }
+        }
+        return string;
     }
 }

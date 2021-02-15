@@ -2,7 +2,7 @@
 package ca.cegepjonquiere.circuit;
 
 // Classe ''ca.cegepjonquiere.circuit.CircuitSerie''
-public class CircuitSerie extends Circuit {
+public class CircuitSerie extends AbstractCircuit {
 
     // Constructeur ''ca.cegepjonquiere.circuit.CircuitSerie'' basic
     public CircuitSerie(){
@@ -19,14 +19,17 @@ public class CircuitSerie extends Circuit {
         return resistance;
     }
 
-    public double calculerCourrant(){
-        return calculerTension() / calculerResistance();
-    }
-
     // Méthode toString
     @Override
     public String toString() {
-        return "ca.cegepjonquiere.circuit.CircuitSerie{" +
-                '}';
+        double tensions;
+        String string = "";
+        for (int i = 0; i < tableauResistors.length; i++) {
+            if (tableauResistors[i] != null){ // Pas de résistors null
+                tensions = tableauResistors[i].getResistance() * calculerCourant();
+                string += "(" + tableauResistors[i].getResistance() + " Ω, " + tensions + " V, " + (tensions / tableauResistors[i].getResistance()) + "), ";
+            }
+        }
+        return string;
     }
 }
