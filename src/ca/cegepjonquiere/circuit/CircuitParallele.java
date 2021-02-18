@@ -8,8 +8,8 @@ public class CircuitParallele extends AbstractCircuit {
     public CircuitParallele() {
     }
 
-    // Méthodes
-
+    // Méthode
+    @Override
     public double calculerResistance() { // Calcul la résistance total
         double resistanceInverse = 0;
         for (int i = 0; i < tableauResistors.length; i++) {

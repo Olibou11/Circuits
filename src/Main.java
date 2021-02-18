@@ -14,6 +14,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
 
         do {
+
             // Variables diverses
             String choixCircuit;
             String resistanceCircuit;
@@ -67,9 +68,9 @@ public class Main {
                     System.out.println(circuit.toString());
                 } else
                     System.out.println(messageErreur); // Message d'erreur
-            } else {
+            } else
                 System.out.println(messageErreur);
-            }
+
         }while(true);
     }
 }

@@ -8,8 +8,8 @@ public class CircuitSerie extends AbstractCircuit {
     public CircuitSerie(){
     }
 
-    // Méthodes
-
+    // Méthode
+    @Override
     public double calculerResistance(){ // Calcul la résistance totale
         double resistance = 0;
         for (int i = 0; i < tableauResistors.length; i++) {
