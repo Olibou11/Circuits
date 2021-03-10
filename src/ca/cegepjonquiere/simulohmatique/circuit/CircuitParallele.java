@@ -11,6 +11,10 @@ public class CircuitParallele extends AbstractCircuit {
     // Méthodes redéfinie
 
     @Override
+    public void specifierCourant(double courant) {  // Jamais utilisé
+    }
+
+    @Override
     public double calculerResistance() { // Calcul la résistance total
         double resistanceInverse = 0;
         for (int i = 0; i < tableauResistors.length; i++) {

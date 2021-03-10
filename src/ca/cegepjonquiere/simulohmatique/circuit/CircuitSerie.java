@@ -11,6 +11,10 @@ public class CircuitSerie extends AbstractCircuit {
     // Méthodes redéfinies
 
     @Override
+    public void specifierCourant(double courant) { // Jamais utilisé
+    }
+
+    @Override
     public double calculerResistance(){ // Calcul la résistance totale
         double resistance = 0;
         for (int i = 0; i < tableauResistors.length; i++) {

@@ -38,8 +38,7 @@ public abstract class AbstractCircuit implements IComposant {
         return calculerTension() / calculerResistance();
         }
 
-    public void specifierCourant(double courant){
-    }
+    public abstract void specifierCourant(double courant); // Jamais utilisé
 
     // Méthode toString
     public String toString() {
