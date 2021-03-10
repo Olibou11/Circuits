@@ -1,12 +1,14 @@
 // Importation package
-package ca.cegepjonquiere.resistor;
+package ca.cegepjonquiere.simulohmatique.resistor;
+import ca.cegepjonquiere.simulohmatique.circuit.IComposant;
 
 // Classe ''ca.cegepjonquiere.resistor.Resistor''
-public class Resistor {
+public class Resistor implements IComposant {
 
     // Attributs
     private double resistance;
     private double tolerance;
+    private double tension;
 
     // Constructeur
     public Resistor(double resistance, double tolerance) {
@@ -30,6 +32,33 @@ public class Resistor {
 
     public void setTolerance(double tolerance) {
         this.tolerance = tolerance;
+    }
+
+    // Méthodes redéfinies
+
+    @Override
+    public void mettreSousTension(double tension) {
+        this.tension = tension;
+    }
+
+    @Override
+    public double calculerTension() {
+        return tension;
+    }
+
+    @Override
+    public void specifierCourant(double courant) {
+
+    }
+
+    @Override
+    public double calculerCourant() {
+        return tension/resistance;
+    }
+
+    @Override
+    public double calculerResistance() {
+        return resistance;
     }
 
     // Méthode toString

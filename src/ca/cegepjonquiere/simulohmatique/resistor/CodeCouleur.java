@@ -1,5 +1,5 @@
 // Importation package
-package ca.cegepjonquiere.resistor;
+package ca.cegepjonquiere.simulohmatique.resistor;
 
 // Enum ''ca.cegepjonquiere.resistor.CodeCouleur''
 public enum CodeCouleur {

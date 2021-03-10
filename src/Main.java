@@ -1,9 +1,9 @@
 // Importations
-import ca.cegepjonquiere.circuit.AbstractCircuit;
-import ca.cegepjonquiere.circuit.CircuitParallele;
-import ca.cegepjonquiere.circuit.CircuitSerie;
-import ca.cegepjonquiere.resistor.FabriqueResistor;
-import ca.cegepjonquiere.resistor.Resistor;
+import ca.cegepjonquiere.simulohmatique.circuit.AbstractCircuit;
+import ca.cegepjonquiere.simulohmatique.circuit.CircuitParallele;
+import ca.cegepjonquiere.simulohmatique.circuit.CircuitSerie;
+import ca.cegepjonquiere.simulohmatique.resistor.FabriqueResistor;
+import ca.cegepjonquiere.simulohmatique.resistor.Resistor;
 import java.util.Scanner;
 
 // Classe ''Main''
@@ -55,7 +55,7 @@ public class Main {
                 for (int i = 0; i < tableauDesString.length; i++) {
                     Resistor r = FabriqueResistor.fabriquerResistor(tableauDesString[i]);
                     if (r != null)
-                        circuit.ajouterResistor(r);
+                        circuit.ajouterComposant(r);
                     else
                         erreurResistor = true; // Erreur détectée
                 }

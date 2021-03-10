@@ -1,5 +1,5 @@
 // Importation package
-package ca.cegepjonquiere.resistor;
+package ca.cegepjonquiere.simulohmatique.resistor;
 
 // Importations
 import java.util.regex.Matcher;
@@ -14,6 +14,10 @@ public class FabriqueResistor {
 
     // Méthode''fabriqueResistor''
     public static Resistor fabriquerResistor(String couleurs){
+
+        // Regarde si la couleur est null pour éviter le plantage
+        if(couleurs == null)
+            return null;
 
         // Vérification du String couleur
         Pattern patronCouleur = Pattern.compile("[NBROJVbMLG]{2,3}[NBROJVbMLoAG][BROJVbMoAG]");

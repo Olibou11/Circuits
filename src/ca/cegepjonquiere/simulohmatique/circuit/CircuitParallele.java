@@ -1,5 +1,5 @@
 // Importation package
-package ca.cegepjonquiere.circuit;
+package ca.cegepjonquiere.simulohmatique.circuit;
 
 // Classe ''ca.cegepjonquiere.circuit.CircuitParallele''
 public class CircuitParallele extends AbstractCircuit {
@@ -8,28 +8,26 @@ public class CircuitParallele extends AbstractCircuit {
     public CircuitParallele() {
     }
 
-    // Méthode
+    // Méthodes redéfinie
+
     @Override
     public double calculerResistance() { // Calcul la résistance total
         double resistanceInverse = 0;
         for (int i = 0; i < tableauResistors.length; i++) {
             if (tableauResistors[i] != null) { // Vérifie s'il s'agit d'un Résiteur
-                resistanceInverse += (1 / tableauResistors[i].getResistance());
+                resistanceInverse += (1 / tableauResistors[i].calculerResistance());
             }
         }
         return 1 / resistanceInverse;
     }
 
-    // Méthode toString
     @Override
-    public String toString() {
-        double tension = calculerTension();
-        String string = "";
+    public void mettreSousTension(double tension){
+        this.tension = tension;
         for (int i = 0; i < tableauResistors.length; i++) {
             if (tableauResistors[i] != null) { // Pas de résistors null
-                string += "(" + tableauResistors[i].getResistance() + " Ω, " + tension + " V, " + (tension / tableauResistors[i].getResistance()) + "A), ";
+                tableauResistors[i].mettreSousTension(tension);
             }
         }
-        return string;
     }
 }
