@@ -1,17 +1,17 @@
 // Importation package
 package ca.cegepjonquiere.simulohmatique.circuit;
 
+import java.util.ArrayList;
+
 // Classe ''ca.cegepjonquiere.circuit.Circuit''
 public abstract class AbstractCircuit implements IComposant {
 
     // Attributs
     protected double tension;
 
-    // Création d'un tableau qui contient tous mes Résisteurs
-    protected IComposant tableauResistors[] = new IComposant[20];
+    // Création d'une liste qui contient tous mes Résisteurs
+    protected ArrayList<IComposant> tableauResistors = new ArrayList<IComposant>();
 
-    // Permet de compter et placer correctement le nombre de résisteurs dans mon tableau
-    private int nbDefois = 0;
 
     // Constructeur ''ca.cegepjonquiere.circuit.Circuit'' basic
     public AbstractCircuit() {
@@ -20,8 +20,7 @@ public abstract class AbstractCircuit implements IComposant {
     // Méthodes
 
     public void ajouterComposant(IComposant r){
-        tableauResistors[nbDefois] = r;
-        nbDefois++;
+        tableauResistors.add(r);
     }
 
     public void mettreSousTension(double tension){
@@ -42,7 +41,7 @@ public abstract class AbstractCircuit implements IComposant {
 
     // Méthode toString
     public String toString() {
-        return "(" + calculerResistance() + " Ω, " + calculerTension() + " V, " + calculerCourant() + " A)";
+        return "(" + calculerResistance() + " Ω, " + calculerTension() + " V, " + calculerCourant() + " A)"; // Pas correct voir ancien lab
     }
 }
 

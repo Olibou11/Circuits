@@ -17,9 +17,9 @@ public class CircuitSerie extends AbstractCircuit {
     @Override
     public double calculerResistance(){ // Calcul la résistance totale
         double resistance = 0;
-        for (int i = 0; i < tableauResistors.length; i++) {
-            if (tableauResistors[i] != null) // Vérifie s'il s'agit d'un Résisteur
-                resistance = resistance + tableauResistors[i].calculerResistance();
+        for (IComposant composant : tableauResistors) {
+            if (composant != null) // Vérifie s'il s'agit d'un Résisteur
+                resistance = resistance + composant.calculerResistance();
         }
         return resistance;
     }
@@ -27,9 +27,9 @@ public class CircuitSerie extends AbstractCircuit {
     @Override
     public void mettreSousTension(double tension){
         this.tension = tension;
-        for (int i = 0; i < tableauResistors.length; i++) {
-            if (tableauResistors[i] != null) { // Pas de résistors null
-                tableauResistors[i].mettreSousTension(tableauResistors[i].calculerResistance() * calculerCourant());
+        for (IComposant composant : tableauResistors) {
+            if (composant != null) { // Pas de résistors null
+                composant.mettreSousTension(composant.calculerResistance() * calculerCourant());
             }
         }
     }

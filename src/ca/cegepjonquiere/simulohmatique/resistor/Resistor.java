@@ -53,7 +53,7 @@ public class Resistor implements IComposant {
 
     @Override
     public double calculerCourant() {
-        return tension/resistance;
+        return tension / resistance;
     }
 
     @Override
