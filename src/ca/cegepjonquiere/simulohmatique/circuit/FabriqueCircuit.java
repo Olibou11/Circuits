@@ -23,31 +23,33 @@ public class FabriqueCircuit {
 
         for (int i = 0; i < descriptionSplit.length; i++) {
 
-            switch (descriptionSplit[i].charAt(0)) {
+            switch (descriptionSplit[i]) {
 
-                case '(':
+                case "(":
                     CircuitSerie s = new CircuitSerie();
-                    circuits.peek().ajouterComposant(s);
+                    if (!circuits.empty())
+                        circuits.peek().ajouterComposant(s);
                     circuits.push(s);
                     parenthese.push('(');
                     break;
 
-                case ')':
-                    if (parenthese.empty() || parenthese.pop() != '(')
+                case ")":
+                    if (parenthese.empty() || parenthese.peek() != '(')
                         return null;
                     parenthese.pop();
                     lastPop = circuits.pop();
                     break; // Les erreurs ne font rien ''break''
 
-                case '[':
+                case "[":
                     CircuitParallele p = new CircuitParallele();
-                    circuits.peek().ajouterComposant(p);
+                    if (!circuits.empty())
+                        circuits.peek().ajouterComposant(p);
                     circuits.push(p);
                     parenthese.push('[');
                     break;
 
-                case']':
-                    if (parenthese.empty() || parenthese.pop() != '[')
+                case"]":
+                    if (parenthese.empty() || parenthese.peek() != '[')
                         return null;
                     parenthese.pop();
                     lastPop = circuits.pop();

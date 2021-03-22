@@ -40,8 +40,14 @@ public abstract class AbstractCircuit implements IComposant {
     public abstract void specifierCourant(double courant); // Jamais utilisé
 
     // Méthode toString
-    public String toString() {
-        return "(" + calculerResistance() + " Ω, " + calculerTension() + " V, " + calculerCourant() + " A)"; // Pas correct voir ancien lab
+    public String toString(){
+        String string = "";
+        for (IComposant composant : tableauResistors) {
+            if (composant != null){
+                string += "(" + composant.calculerResistance() + " Ω, " + composant.calculerTension() + " V, " + composant.calculerCourant() + "A), ";
+            }
+        }
+        return string + " Circuit Total: " + "(" + calculerResistance() + " Ω, " + calculerTension() + " V, " + calculerCourant() + "A) " + "\n";
     }
 }
 
