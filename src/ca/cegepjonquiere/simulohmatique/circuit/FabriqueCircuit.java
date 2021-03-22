@@ -1,22 +1,24 @@
+// Importation package
 package ca.cegepjonquiere.simulohmatique.circuit;
 
+// Importations
 import ca.cegepjonquiere.simulohmatique.resistor.FabriqueResistor;
 import ca.cegepjonquiere.simulohmatique.resistor.Resistor;
-
 import java.util.Stack;
 
+// Classe ''FabriqueCircuit''
 public class FabriqueCircuit {
 
     public static AbstractCircuit fabriquerCircuit(String description){
 
+        // Création des différents paquets
         Stack<Character> parenthese = new Stack<>();
-
         Stack<AbstractCircuit> circuits = new Stack<>();
 
+        // Variables
         final String SEPARATEUR = " ";
         String[] descriptionSplit;
         Resistor resistor;
-
         AbstractCircuit lastPop = null;
 
         descriptionSplit = description.split(SEPARATEUR); // Tableau des sections de la chaine qui est la description
