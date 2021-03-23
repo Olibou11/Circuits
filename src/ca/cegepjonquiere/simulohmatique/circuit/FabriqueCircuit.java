@@ -15,14 +15,18 @@ public class FabriqueCircuit {
         Stack<Character> parenthese = new Stack<>();
         Stack<AbstractCircuit> circuits = new Stack<>();
 
-        // Variables
+        // Variables utilent pour le .split
         final String SEPARATEUR = " ";
         String[] descriptionSplit;
+
+       // Variables utilent pour la fabrication du circuit
         Resistor resistor;
         AbstractCircuit lastPop = null;
 
-        descriptionSplit = description.split(SEPARATEUR); // Tableau des sections de la chaine qui est la description
+        // Split de la description
+        descriptionSplit = description.split(SEPARATEUR); //
 
+        // Boucle qui vérifie et qui crée le circuit
         for (int i = 0; i < descriptionSplit.length; i++) {
 
             switch (descriptionSplit[i]) {
@@ -40,7 +44,7 @@ public class FabriqueCircuit {
                         return null;
                     parenthese.pop();
                     lastPop = circuits.pop();
-                    break; // Les erreurs ne font rien ''break''
+                    break;
 
                 case "[":
                     CircuitParallele p = new CircuitParallele();

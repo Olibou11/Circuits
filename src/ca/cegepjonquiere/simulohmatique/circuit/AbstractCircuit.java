@@ -1,6 +1,7 @@
 // Importation package
 package ca.cegepjonquiere.simulohmatique.circuit;
 
+// Importations
 import java.util.ArrayList;
 
 // Classe ''ca.cegepjonquiere.circuit.Circuit''
@@ -13,7 +14,7 @@ public abstract class AbstractCircuit implements IComposant {
     protected ArrayList<IComposant> tableauResistors = new ArrayList<IComposant>();
 
 
-    // Constructeur ''ca.cegepjonquiere.circuit.Circuit'' basic
+    // Constructeur basic
     public AbstractCircuit() {
     }
 
@@ -37,11 +38,9 @@ public abstract class AbstractCircuit implements IComposant {
         return calculerTension() / calculerResistance();
         }
 
-    public abstract void specifierCourant(double courant); // Jamais utilisé
-
     // Méthode toString
     public String toString(){
-        String string = "";
+        String string = ""; // String vide
         for (IComposant composant : tableauResistors) {
             if (composant != null){
                 string += "(" + composant.calculerResistance() + " Ω, " + composant.calculerTension() + " V, " + composant.calculerCourant() + "A), ";
@@ -50,4 +49,3 @@ public abstract class AbstractCircuit implements IComposant {
         return string + " Circuit Total: " + "(" + calculerResistance() + " Ω, " + calculerTension() + " V, " + calculerCourant() + "A) " + "\n";
     }
 }
-

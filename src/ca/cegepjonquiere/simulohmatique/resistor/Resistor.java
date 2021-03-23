@@ -47,11 +47,6 @@ public class Resistor implements IComposant {
     }
 
     @Override
-    public void specifierCourant(double courant) {
-
-    }
-
-    @Override
     public double calculerCourant() {
         return tension / resistance;
     }
@@ -59,6 +54,11 @@ public class Resistor implements IComposant {
     @Override
     public double calculerResistance() {
         return resistance;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return super.equals(obj);
     }
 
     // Méthode toString

@@ -1,24 +1,24 @@
 // Importation package
 package ca.cegepjonquiere.simulohmatique.circuit;
+import org.junit.jupiter.params.shadow.com.univocity.parsers.common.processor.ObjectRowWriterProcessor;
+
+import java.util.HashMap;
+import java.util.Map;
 
 // Classe ''ca.cegepjonquiere.circuit.CircuitSerie''
 public class CircuitSerie extends AbstractCircuit {
 
-    // Constructeur ''ca.cegepjonquiere.circuit.CircuitSerie'' basic
+    // Constructeur basic
     public CircuitSerie(){
     }
 
     // Méthodes redéfinies
 
     @Override
-    public void specifierCourant(double courant) { // Jamais utilisé
-    }
-
-    @Override
-    public double calculerResistance(){ // Calcul la résistance totale
+    public double calculerResistance(){
         double resistance = 0;
         for (IComposant composant : tableauResistors) {
-            if (composant != null) // Vérifie s'il s'agit d'un Résisteur
+            if (composant != null) // Vérifie s'il s'agit d'un résistor
                 resistance = resistance + composant.calculerResistance();
         }
         return resistance;
@@ -28,9 +28,24 @@ public class CircuitSerie extends AbstractCircuit {
     public void mettreSousTension(double tension){
         this.tension = tension;
         for (IComposant composant : tableauResistors) {
-            if (composant != null) { // Pas de résistors null
+            if (composant != null) { // Vérifie s'il s'agit d'un résistor
                 composant.mettreSousTension(composant.calculerResistance() * calculerCourant());
             }
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object object) {
+
+        Map<IComposant, Integer> map = new HashMap<>();
+
+        for (IComposant resistor: tableauResistors) {
+            
         }
     }
 }

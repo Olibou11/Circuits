@@ -10,8 +10,6 @@ public interface IComposant {
 
     double calculerTension();
 
-    void specifierCourant(double courant);
-
     double calculerCourant();
 
     double calculerResistance();

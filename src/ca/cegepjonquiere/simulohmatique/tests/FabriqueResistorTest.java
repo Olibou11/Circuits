@@ -37,6 +37,7 @@ public class FabriqueResistorTest {
     void fromCodeCinqTolerance() {
         assertEquals(10, FabriqueResistor.fabriquerResistor("RMNNA").getTolerance());
     }
+
     @Test
     void fromCodeInvalid() {
         assertNull(FabriqueResistor.fabriquerResistor(""));
