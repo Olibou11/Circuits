@@ -13,8 +13,8 @@ public enum CodeCouleur {
     M (7, 10000000, 0.1) , // Mauve
     G (8, 100000000, 0.05) , // Gris
     L (9, 1000000000, 0) , // Blanc
-    A (0,0.01, 10) , // Argent
-    o (0, 0.1, 5) ; // Or
+    A (0,0.01, 0.1) , // Argent
+    o (0, 0.1, 0.05) ; // Or
 
     // Attributs privés
     private final int valeur;

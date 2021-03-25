@@ -22,6 +22,7 @@ public class Main {
         System.out.println("\n" + "Veuillez entrer vos résistors entre parenthèses ''( )'' s'il s'agit d'un circuit en série, si non entre crochets ''[ ]'' s'il sagit d'un circuit en parallèle.");
         System.out.print("  >> ");
         circuit = FabriqueCircuit.fabriquerCircuit(sc.nextLine()); // Crée le circuit
+
         if (circuit != null) {
             System.out.println("\n" + "Veuillez entrer une tension en Volt (V).");
             System.out.print("  >> ");

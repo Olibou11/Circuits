@@ -2,6 +2,8 @@
 package ca.cegepjonquiere.simulohmatique.resistor;
 import ca.cegepjonquiere.simulohmatique.circuit.IComposant;
 
+import java.util.Objects;
+
 // Classe ''ca.cegepjonquiere.resistor.Resistor''
 public class Resistor implements IComposant {
 
@@ -56,9 +58,20 @@ public class Resistor implements IComposant {
         return resistance;
     }
 
+    // Méthodes redéfinies de Equals
+
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Resistor resistor = (Resistor) o;
+        return Double.compare(resistor.resistance, resistance) == 0 &&
+                Double.compare(resistor.tolerance, tolerance) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(resistance, tolerance);
     }
 
     // Méthode toString
@@ -69,4 +82,6 @@ public class Resistor implements IComposant {
                 ", tolerance=" + tolerance +
                 '}';
     }
+
+
 }

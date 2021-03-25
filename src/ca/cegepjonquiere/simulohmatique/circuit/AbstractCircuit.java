@@ -3,6 +3,7 @@ package ca.cegepjonquiere.simulohmatique.circuit;
 
 // Importations
 import java.util.ArrayList;
+import java.util.Objects;
 
 // Classe ''ca.cegepjonquiere.circuit.Circuit''
 public abstract class AbstractCircuit implements IComposant {
@@ -11,7 +12,7 @@ public abstract class AbstractCircuit implements IComposant {
     protected double tension;
 
     // Création d'une liste qui contient tous mes Résisteurs
-    protected ArrayList<IComposant> tableauResistors = new ArrayList<IComposant>();
+    protected ArrayList<IComposant> composants = new ArrayList<IComposant>();
 
 
     // Constructeur basic
@@ -21,7 +22,7 @@ public abstract class AbstractCircuit implements IComposant {
     // Méthodes
 
     public void ajouterComposant(IComposant r){
-        tableauResistors.add(r);
+        composants.add(r);
     }
 
     public void mettreSousTension(double tension){
@@ -38,10 +39,25 @@ public abstract class AbstractCircuit implements IComposant {
         return calculerTension() / calculerResistance();
         }
 
+    // Méthodes redéfinies de Equals
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        AbstractCircuit circuit = (AbstractCircuit) o;
+        return composants.equals(circuit.composants);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(composants);
+    }
+
     // Méthode toString
     public String toString(){
         String string = ""; // String vide
-        for (IComposant composant : tableauResistors) {
+        for (IComposant composant : composants) {
             if (composant != null){
                 string += "(" + composant.calculerResistance() + " Ω, " + composant.calculerTension() + " V, " + composant.calculerCourant() + "A), ";
             }

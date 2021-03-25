@@ -13,7 +13,7 @@ public class CircuitParallele extends AbstractCircuit {
     @Override
     public double calculerResistance() {
         double resistanceInverse = 0;
-        for (IComposant composant : tableauResistors) {
+        for (IComposant composant : composants) {
             if (composant != null) // Vérifie s'il s'agit d'un résistor
                 resistanceInverse += (1 / composant.calculerResistance());
         }
@@ -23,14 +23,9 @@ public class CircuitParallele extends AbstractCircuit {
     @Override
     public void mettreSousTension(double tension){
         this.tension = tension;
-        for (IComposant composant : tableauResistors) {
+        for (IComposant composant : composants) {
             if(composant != null) // Vérifie s'il s'agit d'un résistor
                     composant.mettreSousTension(tension);
         }
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
     }
 }
