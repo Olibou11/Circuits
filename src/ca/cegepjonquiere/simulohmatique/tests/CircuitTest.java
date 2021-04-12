@@ -4,12 +4,15 @@ package ca.cegepjonquiere.simulohmatique.tests;
 // Importations des classes
 import ca.cegepjonquiere.simulohmatique.circuit.CircuitParallele;
 import ca.cegepjonquiere.simulohmatique.circuit.CircuitSerie;
+import ca.cegepjonquiere.simulohmatique.circuit.IComposant;
+import ca.cegepjonquiere.simulohmatique.circuit.exeption.CircuitOuvert;
 import ca.cegepjonquiere.simulohmatique.resistor.Resistor;
 
 // Importation du plugin junit
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 // Classe ''CircuitTest''
 public class CircuitTest {
@@ -20,7 +23,7 @@ public class CircuitTest {
     // Tests
 
     @Test
-    public void serieTest() {
+    public void serieTest() throws CircuitOuvert {
         CircuitSerie p1 = new CircuitSerie();
         for (Resistor r : res)
             p1.ajouterComposant(r);
@@ -33,7 +36,7 @@ public class CircuitTest {
     }
 
     @Test
-    public void paralleleTest() {
+    public void paralleleTest() throws CircuitOuvert {
         CircuitParallele p1 = new CircuitParallele();
         for (Resistor r : res)
             p1.ajouterComposant(r);
@@ -56,5 +59,13 @@ public class CircuitTest {
         res[2].setResistance(12);
         res[3] = new Resistor(8, 0.1);
         res[3].setResistance(8);
+    }
+
+    @Test
+    public void exeptionCircuit(){
+
+        IComposant cicuit = new CircuitSerie(); // Création d'un circuit qui n'a pas de composant, ainsi il est ouvert
+
+        assertThrows(CircuitOuvert.class, () -> cicuit.mettreSousTension(120));
     }
 }

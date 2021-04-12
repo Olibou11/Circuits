@@ -2,19 +2,17 @@
 package ca.cegepjonquiere.simulohmatique.tests;
 
 // Importations
-import ca.cegepjonquiere.simulohmatique.circuit.AbstractCircuit;
-import ca.cegepjonquiere.simulohmatique.circuit.CircuitParallele;
-import ca.cegepjonquiere.simulohmatique.circuit.CircuitSerie;
-import ca.cegepjonquiere.simulohmatique.circuit.FabriqueCircuit;
+import ca.cegepjonquiere.simulohmatique.circuit.*;
 import ca.cegepjonquiere.simulohmatique.resistor.Resistor;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 //Classe ''FabriqueCircuitTest''
 public class FabriqueCircuitTest {
 
     @Test
-    public void fabriquerCircuitTest(){
+    public void fabriquerCircuitTest() throws Exception {
 
         // Création des résistors
         Resistor rA = new Resistor(10, 0.05);
@@ -62,5 +60,17 @@ public class FabriqueCircuitTest {
         circuitTotal.mettreSousTension(600);
 
         assertEquals(circuitTotal, ss7);
+    }
+
+    @Test
+    public void exeptionFabriquerCircuit(){
+
+        assertThrows(IllegalArgumentException.class, () -> FabriqueCircuit.fabriquerCircuit("( BVBo")); //Manque une parenthèse à la fin du String
+        assertThrows(IllegalArgumentException.class, () -> FabriqueCircuit.fabriquerCircuit("[ BVBo")); // Manque un crochet à la fin du Srting
+        assertThrows(IllegalArgumentException.class, () -> FabriqueCircuit.fabriquerCircuit("] BVBo")); // Débute avec un ccrochet fermante
+        assertThrows(IllegalArgumentException.class, () -> FabriqueCircuit.fabriquerCircuit(") BVBo")); // Débute avec une parenthèse fermante
+        assertThrows(IllegalArgumentException.class, () -> FabriqueCircuit.fabriquerCircuit("BVbo")); // Aucune parenthèse
+
+
     }
 }

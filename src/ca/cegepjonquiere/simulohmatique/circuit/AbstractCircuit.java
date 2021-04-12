@@ -2,6 +2,8 @@
 package ca.cegepjonquiere.simulohmatique.circuit;
 
 // Importations
+import ca.cegepjonquiere.simulohmatique.circuit.exeption.CircuitOuvert;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -25,7 +27,7 @@ public abstract class AbstractCircuit implements IComposant {
         composants.add(r);
     }
 
-    public void mettreSousTension(double tension){
+    public void mettreSousTension(double tension) throws CircuitOuvert {
             this.tension = tension;
     }
 

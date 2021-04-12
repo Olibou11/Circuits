@@ -1,6 +1,10 @@
 // Importation package
 package ca.cegepjonquiere.simulohmatique.circuit;
 
+import ca.cegepjonquiere.simulohmatique.circuit.exeption.CircuitOuvert;
+
+import javax.swing.*;
+
 // Classe ''ca.cegepjonquiere.circuit.CircuitSerie''
 public class CircuitSerie extends AbstractCircuit {
 
@@ -21,12 +25,14 @@ public class CircuitSerie extends AbstractCircuit {
     }
 
     @Override
-    public void mettreSousTension(double tension){
+    public void mettreSousTension(double tension) throws CircuitOuvert{
         this.tension = tension;
-        for (IComposant composant : composants) {
-            if (composant != null) { // Vérifie s'il s'agit d'un résistor
+        if (!composants.isEmpty()){
+            for (IComposant composant : composants) {
                 composant.mettreSousTension(composant.calculerResistance() * calculerCourant());
             }
         }
+        else
+            throw new CircuitOuvert("Il n'y a aucun résistor / circuit ouvert");
     }
 }

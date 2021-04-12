@@ -1,6 +1,10 @@
 // Importation package
 package ca.cegepjonquiere.simulohmatique.circuit;
 
+import ca.cegepjonquiere.simulohmatique.circuit.exeption.CircuitOuvert;
+
+import java.util.EmptyStackException;
+
 // Classe ''ca.cegepjonquiere.circuit.CircuitParallele''
 public class CircuitParallele extends AbstractCircuit {
 
@@ -21,11 +25,13 @@ public class CircuitParallele extends AbstractCircuit {
     }
 
     @Override
-    public void mettreSousTension(double tension){
+    public void mettreSousTension(double tension) throws CircuitOuvert {
         this.tension = tension;
-        for (IComposant composant : composants) {
-            if(composant != null) // Vérifie s'il s'agit d'un résistor
-                    composant.mettreSousTension(tension);
+        if (!composants.isEmpty())
+            for (IComposant composant : composants) {
+                composant.mettreSousTension(tension);
         }
+        else
+            throw new CircuitOuvert("Il n'y a aucun résistor / circuit ouvert");
     }
 }

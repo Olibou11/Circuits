@@ -5,11 +5,13 @@ package ca.cegepjonquiere.simulohmatique.tests;
 import ca.cegepjonquiere.simulohmatique.circuit.AbstractCircuit;
 import ca.cegepjonquiere.simulohmatique.circuit.CircuitParallele;
 import ca.cegepjonquiere.simulohmatique.circuit.CircuitSerie;
+import ca.cegepjonquiere.simulohmatique.circuit.exeption.CircuitOuvert;
 import ca.cegepjonquiere.simulohmatique.resistor.Resistor;
 
 // Importations du plugin junit
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 // Classe ''CircuitMixteTest''
 public class CircuitMixteTest {
@@ -20,7 +22,7 @@ public class CircuitMixteTest {
     // Méthode de test
 
     @Test
-    public void mixteTest() {
+    public void mixteTest() throws CircuitOuvert {
         res = new Resistor[4];
         res[0] = new Resistor(5, 0.1);
         res[0].setResistance(5);

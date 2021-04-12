@@ -14,13 +14,13 @@ public class FabriqueResistorTest {
     // Tests
 
     @Test
-    void fromCodeQuatreResistance() {
+    void fromCodeQuatreResistance() throws Exception {
         assertEquals(270, FabriqueResistor.fabriquerResistor("RMBo").getResistance());
         assertEquals(1200000, FabriqueResistor.fabriquerResistor("BRVo").getResistance());
     }
 
     @Test
-    void fromCodeCinqResistance() {
+    void fromCodeCinqResistance() throws Exception {
         assertEquals(270, FabriqueResistor.fabriquerResistor("RMNNA").getResistance());
         assertEquals(100000, FabriqueResistor.fabriquerResistor("BNNOB").getResistance());
         assertEquals(274, FabriqueResistor.fabriquerResistor("RMJNR").getResistance());
@@ -29,17 +29,17 @@ public class FabriqueResistorTest {
     }
 
     @Test
-    void fromCodeQuatreTolerance() {
+    void fromCodeQuatreTolerance() throws Exception {
         assertEquals(5, FabriqueResistor.fabriquerResistor("RMBo").getTolerance());
     }
 
     @Test
-    void fromCodeCinqTolerance() {
+    void fromCodeCinqTolerance() throws Exception {
         assertEquals(10, FabriqueResistor.fabriquerResistor("RMNNA").getTolerance());
     }
 
     @Test
-    void fromCodeInvalid() {
+    void fromCodeInvalid() throws Exception {
         assertNull(FabriqueResistor.fabriquerResistor(""));
         assertNull(FabriqueResistor.fabriquerResistor("NoNono"));
         assertNull(FabriqueResistor.fabriquerResistor("oBbo"));
@@ -48,7 +48,7 @@ public class FabriqueResistorTest {
     }
 
     @Test
-    void fromCodeNull() {
+    void fromCodeNull() throws Exception {
         assertNull(FabriqueResistor.fabriquerResistor(null));
     }
 }
