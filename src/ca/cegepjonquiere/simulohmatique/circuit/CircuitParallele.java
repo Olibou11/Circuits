@@ -31,7 +31,7 @@ public class CircuitParallele extends AbstractCircuit {
             for (IComposant composant : composants) {
                 composant.mettreSousTension(tension);
         }
-        else
-            throw new CircuitOuvert("Il n'y a aucun résistor / circuit ouvert");
+        else // Il n'y a aucun résisteur
+            throw new CircuitOuvert("!!! Le circuit est ouvert !!!");
     }
 }

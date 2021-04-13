@@ -36,8 +36,9 @@ public class Main {
             // Fermeture du scanner
                 sc.close();
         }
-        catch (IllegalArgumentException | CircuitOuvert e){
-            System.out.println(e);
+        catch (IllegalArgumentException | CircuitOuvert e) { // Une erreur s'est produite dans le code
+            System.out.println(e); // Imprime la description personnalisé de l'erreur
+            e.printStackTrace(); //Imprime les traces d'erreur dans le code
         }
     }
 }

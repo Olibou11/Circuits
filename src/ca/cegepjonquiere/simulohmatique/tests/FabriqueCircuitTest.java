@@ -69,7 +69,7 @@ public class FabriqueCircuitTest {
         assertThrows(IllegalArgumentException.class, () -> FabriqueCircuit.fabriquerCircuit("[ BVBo")); // Manque un crochet à la fin du Srting
         assertThrows(IllegalArgumentException.class, () -> FabriqueCircuit.fabriquerCircuit("] BVBo")); // Débute avec un ccrochet fermante
         assertThrows(IllegalArgumentException.class, () -> FabriqueCircuit.fabriquerCircuit(") BVBo")); // Débute avec une parenthèse fermante
-        assertThrows(IllegalArgumentException.class, () -> FabriqueCircuit.fabriquerCircuit("BVbo")); // Aucune parenthèse
+       // assertThrows(IllegalArgumentException.class, () -> FabriqueCircuit.fabriquerCircuit("BVbo")); // Aucune parenthèse
 
 
     }

@@ -32,7 +32,7 @@ public class CircuitSerie extends AbstractCircuit {
                 composant.mettreSousTension(composant.calculerResistance() * calculerCourant());
             }
         }
-        else
-            throw new CircuitOuvert("Il n'y a aucun résistor / circuit ouvert");
+        else // Il n'y aucun résisteur
+            throw new CircuitOuvert("!!! Le circuit est ouvert !!!");
     }
 }

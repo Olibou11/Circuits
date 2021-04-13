@@ -43,7 +43,7 @@ public class FabriqueCircuit {
 
                 case ")":
                     if (parenthese.empty() || parenthese.peek() != '(')
-                        throw new IllegalArgumentException("Erreur parenthèse");
+                        throw new IllegalArgumentException("!!! Dans le circuit, une erreur dans les crochets s'est produite !!!");
                     parenthese.pop();
                     lastPop = circuits.pop();
                     break;
@@ -58,7 +58,7 @@ public class FabriqueCircuit {
 
                 case "]":
                     if (parenthese.empty() || parenthese.peek() != '[')
-                        throw new IllegalArgumentException("Erreur parenthèse");
+                        throw new IllegalArgumentException("!!! Dans le circuit, une erreur dans les crochets s'est produite !!!");
                     parenthese.pop();
                     lastPop = circuits.pop();
                     break;
@@ -67,14 +67,14 @@ public class FabriqueCircuit {
                     resistor = FabriqueResistor.fabriquerResistor(descriptionSplit[i]);
                     if(resistor.getResistance() > 0)
                         circuits.peek().ajouterComposant(resistor);
-                    else
-                        throw new IllegalArgumentException("Court circuit, un résistor est null");
+                    else // Le résisteur fabriqué est null = 0
+                        throw new IllegalArgumentException("!!! Un court circuit s'est produit: Le résisteur " + resistor + " est null !!!");
                     break;
             }
         }
         if (parenthese.empty()) // S'il ne reste plus de parenthèse dans la description
             return lastPop;
         else
-            throw new IllegalArgumentException("Erreur les parenthèses ne sont pas fermé");
+            throw new IllegalArgumentException("!!! Une parenthèse dans le circuit n'est pas fermée !!!");
     }
 }
