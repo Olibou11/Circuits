@@ -81,6 +81,6 @@ public class FabriqueCircuit {
                 throw new IllegalArgumentException("!!! Une parenthèse dans le circuit n'est pas fermée !!!");
         }
         else
-            throw new IllegalArgumentException("!!! Aucune parenthèse ou crochet n'est présent dans la description du circuit !!!");
+            throw new IllegalArgumentException("!!! Aucune parenthèse ou aucun crochet n'est présent dans la description du circuit !!!");
     }
 }
