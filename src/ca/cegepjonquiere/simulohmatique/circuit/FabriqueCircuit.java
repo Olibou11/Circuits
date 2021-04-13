@@ -6,6 +6,7 @@ package ca.cegepjonquiere.simulohmatique.circuit;
 import ca.cegepjonquiere.simulohmatique.resistor.FabriqueResistor;
 import ca.cegepjonquiere.simulohmatique.resistor.Resistor;
 
+import javax.swing.*;
 import java.util.Stack;
 
 // Classe ''FabriqueCircuit''
@@ -28,53 +29,58 @@ public class FabriqueCircuit {
         // Split de la description
         descriptionSplit = description.split(SEPARATEUR);
 
-        // Boucle qui vérifie et qui crée le circuit
-        for (int i = 0; i < descriptionSplit.length; i++) {
+        if (descriptionSplit[0].equals("(") || descriptionSplit[0].equals("[")) {
 
-            switch (descriptionSplit[i]) {
+            // Boucle qui vérifie et qui crée le circuit
+            for (int i = 0; i < descriptionSplit.length; i++) {
 
-                case "(":
-                    CircuitSerie s = new CircuitSerie();
-                    if (!circuits.empty())
-                        circuits.peek().ajouterComposant(s);
-                    circuits.push(s);
-                    parenthese.push('(');
-                    break;
+                switch (descriptionSplit[i]) {
 
-                case ")":
-                    if (parenthese.empty() || parenthese.peek() != '(')
-                        throw new IllegalArgumentException("!!! Dans le circuit, une erreur dans les crochets s'est produite !!!");
-                    parenthese.pop();
-                    lastPop = circuits.pop();
-                    break;
+                    case "(":
+                        CircuitSerie s = new CircuitSerie();
+                        if (!circuits.empty())
+                            circuits.peek().ajouterComposant(s);
+                        circuits.push(s);
+                        parenthese.push('(');
+                        break;
 
-                case "[":
-                    CircuitParallele p = new CircuitParallele();
-                    if (!circuits.empty())
-                        circuits.peek().ajouterComposant(p);
-                    circuits.push(p);
-                    parenthese.push('[');
-                    break;
+                    case ")":
+                        if (parenthese.empty() || parenthese.peek() != '(')
+                            throw new IllegalArgumentException("!!! Dans le circuit, une erreur dans les crochets s'est produite !!!");
+                        parenthese.pop();
+                        lastPop = circuits.pop();
+                        break;
 
-                case "]":
-                    if (parenthese.empty() || parenthese.peek() != '[')
-                        throw new IllegalArgumentException("!!! Dans le circuit, une erreur dans les crochets s'est produite !!!");
-                    parenthese.pop();
-                    lastPop = circuits.pop();
-                    break;
+                    case "[":
+                        CircuitParallele p = new CircuitParallele();
+                        if (!circuits.empty())
+                            circuits.peek().ajouterComposant(p);
+                        circuits.push(p);
+                        parenthese.push('[');
+                        break;
 
-                default:
-                    resistor = FabriqueResistor.fabriquerResistor(descriptionSplit[i]);
-                    if(resistor.getResistance() > 0)
-                        circuits.peek().ajouterComposant(resistor);
-                    else // Le résisteur fabriqué est null = 0
-                        throw new IllegalArgumentException("!!! Un court circuit s'est produit: Le résisteur " + resistor + " est null !!!");
-                    break;
+                    case "]":
+                        if (parenthese.empty() || parenthese.peek() != '[')
+                            throw new IllegalArgumentException("!!! Dans le circuit, une erreur dans les crochets s'est produite !!!");
+                        parenthese.pop();
+                        lastPop = circuits.pop();
+                        break;
+
+                    default:
+                        resistor = FabriqueResistor.fabriquerResistor(descriptionSplit[i]);
+                        if (resistor.getResistance() > 0)
+                            circuits.peek().ajouterComposant(resistor);
+                        else // Le résisteur fabriqué est null = 0
+                            throw new IllegalArgumentException("!!! Un court circuit s'est produit: Le résisteur " + resistor + " est null !!!");
+                        break;
+                }
             }
+            if (parenthese.empty()) // S'il ne reste plus de parenthèse dans la description
+                return lastPop;
+            else
+                throw new IllegalArgumentException("!!! Une parenthèse dans le circuit n'est pas fermée !!!");
         }
-        if (parenthese.empty()) // S'il ne reste plus de parenthèse dans la description
-            return lastPop;
         else
-            throw new IllegalArgumentException("!!! Une parenthèse dans le circuit n'est pas fermée !!!");
+            throw new IllegalArgumentException("!!! Aucune parenthèse ou crochet n'est présent dans la description du circuit !!!");
     }
 }

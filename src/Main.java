@@ -15,9 +15,6 @@ public class Main {
         // Création du circuit
         AbstractCircuit circuit;
 
-        // String responsable du message d'erreur
-        String messageErreur = "          !!! Code ERREUR: Mauvaise entrée !!!";
-
         // Questionnaire
 
         System.out.println("\n" + "•-----------------------Calculatrice-----------------------•");

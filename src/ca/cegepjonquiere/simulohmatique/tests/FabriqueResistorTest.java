@@ -29,26 +29,22 @@ public class FabriqueResistorTest {
     }
 
     @Test
-    void fromCodeQuatreTolerance() throws Exception {
-        assertEquals(5, FabriqueResistor.fabriquerResistor("RMBo").getTolerance());
+    void fromCodeQuatreTolerance() {
+        assertEquals(0.05, FabriqueResistor.fabriquerResistor("RMBo").getTolerance());
     }
 
     @Test
-    void fromCodeCinqTolerance() throws Exception {
-        assertEquals(10, FabriqueResistor.fabriquerResistor("RMNNA").getTolerance());
+    void fromCodeCinqTolerance() {
+        assertEquals(0.1, FabriqueResistor.fabriquerResistor("RMNNA").getTolerance());
     }
 
-    @Test
-    void fromCodeInvalid() throws Exception {
-        assertNull(FabriqueResistor.fabriquerResistor(""));
-        assertNull(FabriqueResistor.fabriquerResistor("NoNono"));
-        assertNull(FabriqueResistor.fabriquerResistor("oBbo"));
-        assertNull(FabriqueResistor.fabriquerResistor("XZXZZ"));
-        assertNull(FabriqueResistor.fabriquerResistor("RMNNL"));
-    }
+
 
     @Test
-    void fromCodeNull() throws Exception {
-        assertNull(FabriqueResistor.fabriquerResistor(null));
+    public void exeptionFabriquerResistor(){
+        assertThrows(IllegalArgumentException.class, () -> FabriqueResistor.fabriquerResistor("1234")); // La séquence de couleurs contient des nombres
+        assertThrows(IllegalArgumentException.class, () -> FabriqueResistor.fabriquerResistor("BNoooo")); // La séquence de couleurs est trop longue, soit de 7 couleurs
+        assertThrows(IllegalArgumentException.class, () -> FabriqueResistor.fabriquerResistor("BNo")); // La séquence de couleurs est trop courte, soit de 3 couleurs
+        assertThrows(IllegalArgumentException.class, () -> FabriqueResistor.fabriquerResistor("")); // La séquence est null
     }
 }
