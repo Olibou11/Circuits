@@ -2,11 +2,8 @@
 package ca.cegepjonquiere.simulohmatique.circuit;
 
 // Importations
-
 import ca.cegepjonquiere.simulohmatique.resistor.FabriqueResistor;
 import ca.cegepjonquiere.simulohmatique.resistor.Resistor;
-
-import javax.swing.*;
 import java.util.Stack;
 
 // Classe ''FabriqueCircuit''

@@ -1,9 +1,9 @@
 // Importation package
 package ca.cegepjonquiere.simulohmatique.circuit;
 
+// Importations
 import ca.cegepjonquiere.simulohmatique.circuit.exeption.CircuitOuvert;
-
-import javax.swing.*;
+import java.util.Objects;
 
 // Classe ''ca.cegepjonquiere.circuit.CircuitSerie''
 public class CircuitSerie extends AbstractCircuit {
@@ -15,18 +15,14 @@ public class CircuitSerie extends AbstractCircuit {
     // Méthodes redéfinies
 
     @Override
-    public double calculerResistance(){
-        double resistance = 0;
-        for (IComposant composant : composants) {
-            if (composant != null) // Vérifie s'il s'agit d'un résistor
-                resistance = resistance + composant.calculerResistance();
-        }
-        return resistance;
+    public double calculerResistance() {
+        return composants.stream().filter(Objects::nonNull).mapToDouble(IComposant::calculerResistance).sum();
     }
 
     @Override
     public void mettreSousTension(double tension) throws CircuitOuvert{
         this.tension = tension;
+
         if (!composants.isEmpty()){
             for (IComposant composant : composants) {
                 composant.mettreSousTension(composant.calculerResistance() * calculerCourant());

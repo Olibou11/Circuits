@@ -1,9 +1,9 @@
 // Importation package
 package ca.cegepjonquiere.simulohmatique.circuit;
 
+// Importations
 import ca.cegepjonquiere.simulohmatique.circuit.exeption.CircuitOuvert;
-
-import java.util.EmptyStackException;
+import java.util.Objects;
 
 // Classe ''ca.cegepjonquiere.circuit.CircuitParallele''
 public class CircuitParallele extends AbstractCircuit {
@@ -16,12 +16,7 @@ public class CircuitParallele extends AbstractCircuit {
 
     @Override
     public double calculerResistance() {
-        double resistanceInverse = 0;
-        for (IComposant composant : composants) {
-            if (composant != null) // Vérifie s'il s'agit d'un résistor
-                resistanceInverse += (1 / composant.calculerResistance());
-        }
-        return 1 / resistanceInverse;
+        return 1 / composants.stream().filter(Objects::nonNull).mapToDouble(IComposant::calculerResistance).sum();
     }
 
     @Override
